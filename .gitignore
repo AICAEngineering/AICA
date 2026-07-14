@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+website/node_modules/
+
+# Next.js build files
+.next/
+website/.next/
+out/
+dist/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editors and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# TypeScript
+*.tsbuildinfo
+
+# Vercel
+.vercel/
+
+# Old root-level website and token-oriented whitepaper
+index.html
+assets/
+README.txt
+AICA_Whitepaper.pdf
+AICA_Whitepaper.docx
