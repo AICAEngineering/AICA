@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
+import { createPageMetadata } from "@/lib/metadata";
 
 const description = "Investor information for AICA, an early-stage engineering programme developing an unconventional advanced air mobility platform through progressive analysis, simulation, and physical validation.";
-export const metadata: Metadata = { title: { absolute: "AICA Investor Information | Engineering the Next Stage" }, description, alternates: { canonical: "https://www.aicaair.com/investors" }, openGraph: { title: "AICA Investor Information | Engineering the Next Stage", description, url: "https://www.aicaair.com/investors", siteName: "AICA", type: "website" } };
+export const metadata = createPageMetadata({ title: "AICA Investor Information | Engineering the Next Stage", description, path: "/investors", absoluteTitle: true });
 
 const story = [
   ["A Different Question About Flight", ["AICA begins with a different question about advanced air mobility: can a vehicle be engineered around an unconventional architecture rather than simply reproducing an aeroplane, helicopter, or rotorcraft?", "The concept is intended to operate without exposed propellers or external rotors. That direction is an engineering hypothesis to be investigated, not evidence of a completed aircraft."]],

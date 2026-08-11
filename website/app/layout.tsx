@@ -21,10 +21,33 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      description: siteConfig.description,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      url: `${siteConfig.url}/`,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      publisher: { "@id": `${siteConfig.url}/#organization` },
+      inLanguage: "en",
+    },
+  ],
+};
+
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <a className="sr-only z-[100] rounded-md bg-white px-4 py-3 font-semibold text-aica-800 shadow-soft focus:not-sr-only focus:fixed focus:left-4 focus:top-4" href="#main-content">Skip to main content</a>
         <Navbar />
         {children}

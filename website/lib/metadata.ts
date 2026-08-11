@@ -1,13 +1,13 @@
 ﻿import type { Metadata } from "next";
 import { siteConfig } from "@/data/site";
 
-export function createPageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
+export function createPageMetadata({ title, description, path, absoluteTitle = false }: { title: string; description: string; path: string; absoluteTitle?: boolean }): Metadata {
   const url = new URL(path, siteConfig.url).toString();
-  const resolvedTitle = path === "/" ? siteConfig.title : `${title} | ${siteConfig.name}`;
+  const resolvedTitle = path === "/" || absoluteTitle ? title : `${title} | ${siteConfig.name}`;
   return {
-    title: path === "/" ? { absolute: siteConfig.title } : title,
+    title: path === "/" || absoluteTitle ? { absolute: title } : title,
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: url },
     openGraph: {
       title: resolvedTitle,
       description,
