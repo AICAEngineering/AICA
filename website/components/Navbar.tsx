@@ -36,7 +36,7 @@ export function Navbar() {
   useEffect(() => setIsOpen(false), [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95">
+    <header className="sticky top-0 z-[100] isolate border-b border-slate-200/80 bg-white/95 shadow-subtle backdrop-blur-sm">
       <Container>
         <div className="flex min-h-[4.75rem] items-center justify-between gap-6">
           <Link className="flex items-center gap-3" href="/" aria-label="AICA home">

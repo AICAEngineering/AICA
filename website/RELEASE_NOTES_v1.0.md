@@ -1,56 +1,73 @@
-﻿# AICA Website Release Notes v1.0
+# AICA Website Release Notes v1.0
 
-Release date: 14 July 2026
+## Release Summary
 
-## Release summary
+AICA Website v1.0 delivers the first production-ready version of the programme’s documentation-first Next.js website.
 
-AICA Website v1.0 is the first public release of the documentation-first Next.js platform in `website/`.
+The release presents AICA as an independent, early-stage engineering programme. It documents concepts, research questions, architecture reasoning, development methods, evidence maturity, and conditional future validation without presenting unvalidated performance as established capability.
 
-The release presents AICA as an independent, early-stage engineering initiative working from concept documentation toward possible prototype validation. It does not claim a validated technology, completed prototype, test result, production date, technical success, investment return, or funding outcome.
+## Delivered Features
 
-## Public engineering document
+### Technical homepage
 
-- Added `AICA_Engineering_Overview.pdf` as the primary public document.
-- Added the maintained MDX source at `content/docs/AICA_Engineering_Overview.mdx`.
-- Published the overview as accessible HTML on `/whitepaper` and as an embedded/downloadable PDF.
-- Included purpose, current status, engineering philosophy, development process, conditional roadmap, transparency and risk statements, and intellectual-property limitations.
-- Moved the superseded v0.1 document to `archive/legacy/AICA_Whitepaper_v0.1_legacy.pdf`; it is not served from `public/`.
-- Kept any hypothetical future token initiative explicitly separate from the engineering program. No token offering or token economics appear in the public engineering narrative.
+- Responsive engineering-focused hero and programme-status presentation.
+- System architecture, research areas, development roadmap, Engineering Journal, engineering principles, and public-document sections.
+- Technical concept imagery and responsive layouts aligned with the AICA visual system.
 
-## Documentation platform
+### Research and documentation
 
-Public routes:
+- Research hub with six engineering areas, current questions, methodology, evidence maturity, and related navigation.
+- Documentation hub with a local table of contents, route-aware library, four document-authority classes, evidence vocabulary, principles, confirmed programme history from 2014, and recent records.
+- Dedicated Programme Overview, Engineering Process, and Research Standards pages.
 
-- `/`
-- `/about`
-- `/research`
-- `/documentation`
-- `/documentation/program-overview`
-- `/documentation/engineering-process`
-- `/documentation/research-standards`
-- `/journal`
-- `/roadmap`
-- `/whitepaper`
+### Engineering Journal
 
-The documentation architecture includes MDX content, reusable document cards, breadcrumbs, current-page navigation state, a documentation sidebar, and a responsive document viewer.
+- Public Journal index and homepage preview cards driven by `data/journal.ts`.
+- Three statically generated records:
+  - `/journal/concept-evolution`
+  - `/journal/engineering-architecture`
+  - `/journal/energy-system-development`
+- Route-specific metadata, breadcrumbs, responsive images, versions, evidence statuses, limitations, and related programme links.
 
-## Release hardening
+### Roadmap and Engineering Overview
 
-- Aligned the website and engineering overview around one five-phase conditional roadmap.
-- Added route-specific titles, descriptions, canonical URLs, Open Graph URLs, and Twitter summary metadata.
-- Standardized the production origin as `https://www.aicaair.com` across metadata, sitemap, and robots.
-- Fixed the document-card action glyph and validated source/PDF encoding.
-- Added a skip link and focusable main targets.
-- Removed collapsed mobile navigation from the tab order.
-- Added mobile-menu focus entry, Escape closing, focus return, accurate ARIA state, and current-page indication.
-- Added PDF version, publication date, status, file size, mobile fallback, new-tab wording, and accessible HTML content.
-- Aligned `@next/mdx` with Next.js 15.
-- Applied a scoped patched PostCSS override; `npm audit` reports zero vulnerabilities.
-- Disabled webpack filesystem caching to prevent dependency-snapshot warnings in the OneDrive-backed release workspace.
+- Conditional programme phases, current-focus areas, evidence maturity, decision gates, and future-stage labels.
+- `/whitepaper` document status, scope, limitations, embedded PDF viewer, and direct open/download access.
+- Hydration-safe PDF iframe markup with unchanged appearance and responsive dimensions.
 
-## Validation
+### Navigation, accessibility, and responsive behaviour
 
-The release candidate passes:
+- Shared desktop/mobile navigation with current-page states.
+- Mobile-menu focus entry, Escape handling, and focus return.
+- Skip link, visible focus styles, semantic landmarks, breadcrumbs, descriptive image text, and titled PDF viewer.
+- Responsive grids and readable single-column mobile layouts.
+
+### SEO and discovery
+
+- Route-specific titles, descriptions, canonical URLs, Open Graph URLs, and Twitter summary metadata.
+- Production origin set to `https://www.aicaair.com`.
+- Public robots and sitemap routes covering all content pages and Journal entries.
+
+## Content Integrity
+
+- Programme history identifies Concept & Research as beginning in 2014.
+- No 300 kg payload figure is used.
+- No unsupported range, payload, noise, power, energy-density, speed, endurance, service-life, certification, or safety-performance claim is presented as validated.
+- Physical subsystem, prototype, flight, certification, and production work is described as future, planned, or conditional.
+- Confidential propulsion details remain excluded.
+
+## Technology
+
+- Next.js 15 App Router
+- React 19
+- TypeScript
+- Tailwind CSS
+- MDX support
+- Static generation for public content and Journal entry routes
+
+## Final Validation
+
+The final implementation passes:
 
 ```bash
 npm run typecheck
@@ -58,6 +75,4 @@ npm run lint
 npm run build
 ```
 
-All application routes are statically prerendered. Local production-server checks return HTTP 200 for every route, the engineering overview PDF, `robots.txt`, and `sitemap.xml`.
-
-See `RELEASE_REVIEW_RC2.md` for the final production recommendation and remaining non-blocking observations.
+Local production checks confirmed HTTP 200 for all Journal entry routes and `/whitepaper`. A browser-console check of `/whitepaper` detected no hydration warnings or Recoverable Errors.

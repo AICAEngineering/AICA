@@ -1,6 +1,12 @@
-﻿import { Hero } from "@/components/Hero";
+import { DevelopmentRoadmap } from "@/components/DevelopmentRoadmap";
 import { DocumentCard } from "@/components/DocumentCard";
+import { EngineeringPrinciples } from "@/components/EngineeringPrinciples";
+import { Hero } from "@/components/Hero";
+import { InvestorCta } from "@/components/InvestorCta";
+import { JournalPreview } from "@/components/JournalPreview";
+import { ResearchAreas } from "@/components/ResearchAreas";
 import { Section } from "@/components/Section";
+import { SystemArchitecture } from "@/components/SystemArchitecture";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
@@ -16,5 +22,5 @@ const documents = [
 ];
 
 export default function Home() {
-  return <main id="main-content" tabIndex={-1}><Hero /><Section eyebrow="Public development documentation" title="Engineering work, organized for review." description="The current phase is a documentation baseline. These materials define what the program is, what it does not yet claim, and how future model work would be evaluated." surface="soft"><div className="grid gap-5 md:grid-cols-3">{documents.map((document) => <DocumentCard key={document.href} {...document} />)}</div></Section></main>;
+  return <main id="main-content" tabIndex={-1}><Hero /><SystemArchitecture /><ResearchAreas /><DevelopmentRoadmap /><JournalPreview /><EngineeringPrinciples /><InvestorCta /><Section eyebrow="Public development documentation" title="Engineering work, organized for review." description="The current phase is a documentation baseline. These materials define what the program is, what it does not yet claim, and how future model work would be evaluated." surface="soft"><div className="grid gap-5 md:grid-cols-3">{documents.map((document) => <DocumentCard key={document.href} {...document} />)}</div></Section></main>;
 }

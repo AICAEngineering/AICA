@@ -1,31 +1,25 @@
-﻿# AICA Website v1.0 Deployment Checklist
+# AICA Website v1.0 Deployment Checklist
 
-## Release scope
+## Build
 
-- [ ] Deployment root is `website/`.
-- [ ] The repository-root static website remains unchanged.
-- [ ] Node.js runtime supports Next.js 15.
-- [ ] Dependencies are installed with `npm ci`.
-- [ ] `package-lock.json` is committed.
-- [ ] `archive/legacy/AICA_Whitepaper_v0.1_legacy.pdf` is retained for history and is not publicly served.
-- [ ] `public/docs/AICA_Engineering_Overview.pdf` is present.
-- [ ] Production origin is `https://www.aicaair.com` with the `www` hostname.
+- [ ] Set the deployment root to `website/`.
+- [ ] Use a Node.js runtime supported by Next.js 15.
+- [ ] Install dependencies with `npm ci`.
+- [ ] Confirm `public/docs/AICA_Engineering_Overview.pdf` is present.
+- [ ] Run `npm run typecheck`.
+- [ ] Run `npm run lint`.
+- [ ] Run `npm run build`.
 
-## Required validation
+## Production Configuration
 
-All commands must complete with zero errors and zero warnings:
+- [ ] Set the production hostname to `https://www.aicaair.com`.
+- [ ] Use the Next.js framework preset and default output.
+- [ ] Confirm HTTPS and intended `www` redirect behaviour.
+- [ ] Confirm no development server or stale `.next` output is deployed.
 
-```bash
-npm run typecheck
-npm run lint
-npm run build
-```
+## Route Checks
 
-- [ ] `npm audit` reports zero known vulnerabilities.
-
-## Route and link verification
-
-Confirm HTTP 200 after deployment:
+Confirm HTTP 200 for:
 
 - [ ] `/`
 - [ ] `/about`
@@ -35,89 +29,43 @@ Confirm HTTP 200 after deployment:
 - [ ] `/documentation/engineering-process`
 - [ ] `/documentation/research-standards`
 - [ ] `/journal`
+- [ ] `/journal/concept-evolution`
+- [ ] `/journal/engineering-architecture`
+- [ ] `/journal/energy-system-development`
 - [ ] `/roadmap`
 - [ ] `/whitepaper`
 - [ ] `/docs/AICA_Engineering_Overview.pdf`
-- [ ] `/icon.svg`
 - [ ] `/robots.txt`
 - [ ] `/sitemap.xml`
 
-External verification:
+## Content and Links
 
-- [ ] `https://x.com/AICAair` opens the intended official project account.
-- [ ] The legacy `/docs/AICA_Whitepaper.pdf` path is absent or intentionally redirected away from the superseded document.
+- [ ] Homepage and Journal cards open the correct Journal records.
+- [ ] Research, Documentation, Journal, Roadmap, and Engineering Overview links resolve.
+- [ ] PDF open and download actions work.
+- [ ] `https://x.com/AICAair` opens the intended project account.
+- [ ] No unsupported performance or validation claims appear.
 
-## Document review
+## Responsive and Accessibility QA
 
-- [ ] `/whitepaper` labels the primary document “AICA Engineering Overview.”
-- [ ] PDF and HTML versions show version 1.0, 14 July 2026, and early-stage status.
-- [ ] Website and document use the same five roadmap phases.
-- [ ] No public page or primary document contains Solana, Raydium, token allocation, or token-economics content.
-- [ ] No page claims validation, completed prototypes, test results, production dates, technical success, investment returns, or funding outcomes.
-- [ ] PDF opens in desktop viewer and through the mobile download link.
+- [ ] Check 390 px, 768 px, 1024 px, and 1440 px layouts.
+- [ ] Confirm there is no horizontal page overflow.
+- [ ] Test mobile navigation, Escape closing, and focus return.
+- [ ] Test the skip link, visible focus states, breadcrumbs, and keyboard navigation.
+- [ ] Confirm images load with appropriate alternative text.
+- [ ] Confirm the PDF viewer is titled, responsive, and offers direct access links.
+- [ ] Confirm the browser console contains no hydration warnings or Recoverable Errors.
 
-## SEO and metadata
+## SEO
 
-For every page:
+- [ ] Confirm canonical and Open Graph URLs use `https://www.aicaair.com`.
+- [ ] Confirm route titles and descriptions render correctly.
+- [ ] Confirm `robots.txt` references the production sitemap.
+- [ ] Confirm the sitemap contains all public routes and Journal entries.
 
-- [ ] Canonical URL matches the page route on `https://www.aicaair.com`.
-- [ ] Open Graph URL matches the page route.
-- [ ] Title and description describe the page content.
-- [ ] Twitter card uses the supported summary format.
+## Sign-off
 
-Site-level:
-
-- [ ] `robots.txt` allows indexing and names `https://www.aicaair.com/sitemap.xml`.
-- [ ] `sitemap.xml` contains every public route with `www.aicaair.com` URLs.
-- [ ] No staging or non-`www` origin appears in rendered metadata.
-
-## Responsive QA
-
-Check at 390 px, 768 px, 1024 px, and 1440 px:
-
-- [ ] No horizontal page scrolling.
-- [ ] Header, hero, cards, breadcrumbs, and footer remain readable.
-- [ ] Mobile navigation opens and closes without layout overlap.
-- [ ] Documentation navigation precedes content clearly on narrow screens.
-- [ ] PDF viewer falls back to the mobile document links and HTML version below.
-- [ ] SVG diagram scales within its container.
-
-## Accessibility QA
-
-Keyboard-only:
-
-- [ ] Skip link appears on focus and moves to the main content.
-- [ ] Focus indicator is visible on all controls.
-- [ ] Mobile menu moves focus to its first link when opened.
-- [ ] Escape closes the mobile menu and returns focus to the trigger.
-- [ ] Closing from the trigger returns focus to the trigger.
-- [ ] Collapsed mobile links are absent from the tab order.
-
-Semantics:
-
-- [ ] Menu trigger exposes accurate `aria-expanded`, `aria-controls`, and accessible labels.
-- [ ] Current navigation items expose `aria-current="page"`.
-- [ ] Breadcrumbs expose the current page.
-- [ ] PDF iframe has a descriptive title and accessible HTML fallback content is present.
-- [ ] New-tab links announce the context change.
-
-## Production deployment
-
-Recommended settings:
-
-- Framework preset: Next.js
-- Build command: `npm run build`
-- Install command: `npm ci`
-- Output: default Next.js output
-- Root directory: `website`
-
-## Post-deployment
-
-- [ ] Open the deployed site in a private session.
-- [ ] Confirm there are no console or hydration errors.
-- [ ] Confirm all route and asset checks above return HTTP 200.
-- [ ] Confirm canonical, Open Graph, robots, and sitemap output on the live hostname.
-- [ ] Test the mobile menu with keyboard and screen reader.
-- [ ] Confirm the X destination and account ownership.
-- [ ] Run Lighthouse for performance, accessibility, best practices, and SEO.
-- [ ] Record deployment URL, commit, timestamp, and reviewer sign-off.
+- [ ] Record the deployed commit SHA.
+- [ ] Record the production deployment URL and timestamp.
+- [ ] Complete a private-window smoke test.
+- [ ] Record reviewer approval.

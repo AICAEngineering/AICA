@@ -1,4 +1,4 @@
-﻿import { siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
 
 export function DocumentViewer() {
   return (
@@ -14,9 +14,7 @@ export function DocumentViewer() {
         <p className="text-sm leading-6 text-slate-600">The embedded viewer is available on larger screens. The complete document is also provided as accessible HTML below.</p>
         <a className="mt-4 inline-flex text-sm font-semibold text-aica-700 underline underline-offset-4" href={siteConfig.primaryDocumentUrl}>Download the engineering overview PDF</a>
       </div>
-      <iframe className="hidden h-[72vh] min-h-[36rem] w-full md:block" src={`${siteConfig.primaryDocumentUrl}#view=FitH`} title="AICA Engineering Overview PDF viewer">
-        <p><a href={siteConfig.primaryDocumentUrl}>Download the AICA Engineering Overview PDF.</a></p>
-      </iframe>
+      <iframe className="hidden h-[72vh] min-h-[36rem] w-full md:block" src={`${siteConfig.primaryDocumentUrl}#view=FitH`} title="AICA Engineering Overview PDF viewer" />
     </div>
   );
 }

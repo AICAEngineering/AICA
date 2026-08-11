@@ -1,5 +1,12 @@
-﻿import Content from "@/content/pages/research.mdx";
-import { ContentPage } from "@/components/ContentPage";
+import { ResearchHub } from "@/components/ResearchHub";
 import { createPageMetadata } from "@/lib/metadata";
-export const metadata = createPageMetadata({ title: "Research", description: "The open engineering questions AICA intends to define before any physical model or prototype validation work.", path: "/research" });
-export default function Page() { return <ContentPage eyebrow="Technical questions" breadcrumbs={[{ label: "Research" }]}><Content /></ContentPage>; }
+
+export const metadata = createPageMetadata({
+  title: "Research",
+  description: "Explore AICA research areas, current engineering questions, methodology, validation framework, and programme documentation.",
+  path: "/research",
+});
+
+export default function Page() {
+  return <ResearchHub />;
+}
