@@ -15,6 +15,7 @@ const routes = [
   "/roadmap",
   "/whitepaper",
   "/investors",
+  "/support",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
